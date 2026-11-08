@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MediaHog
 
-## Getting Started
+Independent vinyl shop: Next.js 16, TypeScript, Tailwind, Supabase (Postgres), Stripe Checkout.
 
-First, run the development server:
+- `src/app/(shop)` storefront, `src/app/admin` dashboard, `src/app/api` checkout, Stripe webhook, import and cron endpoints
+- `src/lib/importer` Discogs CSV parsing, planning and applying (match key: Discogs **listing ID**)
+- `supabase/migrations` schema and the atomic stock functions (reserve, finalise, release, adjust)
+- `tests` importer, catalogue search, webhook and stock tests (run on an embedded Postgres)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Local development
 ```
+npm install
+cp .env.example .env.local   # fill in Supabase, Stripe, Resend values
+npm run dev
+npx vitest run               # tests
+npm run lint && npx tsc --noEmit
+```
+To deploy, follow **DEPLOYMENT.md**.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Key rules
+- Orders become paid only in the Stripe webhook (signature-verified, idempotent).
+- Stock is reserved atomically at checkout and held 30 minutes; the cron job releases expired holds.
+- Importing never deletes: listings missing from a CSV are shown for you to hide or zero explicitly.
+- No Discogs scraping or API use; Discogs artwork is not copied (their terms restrict it). Upload your own artwork in Admin > Inventory.
