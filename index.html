@@ -191,7 +191,7 @@ footer.site .legal{border-top:1px solid rgba(235,203,0,.3);font-size:13px;paddin
 </style></head><body>
 
 <div class="note-bar"><div class="wrap"><b>Design preview.</b> Sample listings only: real albums with covers found automatically through MusicBrainz and the Cover Art Archive. Prices, conditions and stock are placeholders, not your inventory.</div></div>
-<div class="util"><div class="wrap"><span>Vinyl records, CDs and DVDs, graded and described by a specialist</span><span>UK and international delivery &nbsp;|&nbsp; Customer support</span></div></div>
+<div class="util"><div class="wrap"><span>Vinyl records, CDs and DVDs, graded and described by a specialist</span><span>UK and international delivery &nbsp;|&nbsp; Customer support &nbsp;|&nbsp; <span id="cvs" style="color:#ebcb00"></span></span></div></div>
 <header class="top"><div class="wrap bar">
  <a class="brand" href="#home" aria-label="MediaHog home"><span class="seal" id="hSeal"></span><span class="wm"><b>MediaHog</b><small>Independent music</small></span></a>
  <form class="search" id="sf" role="search"><select id="sd" aria-label="Department"><option value="">All departments</option><option value="vinyl">Vinyl</option><option value="cd">CDs</option><option value="dvd">DVDs &amp; Films</option></select><input id="q" type="text" placeholder="Search artist, album, label, catalogue number or year" aria-label="Search"><button>Search</button></form>
@@ -341,16 +341,21 @@ const CK="mhcov3";let cache={};try{cache=JSON.parse(localStorage.getItem(CK)||"{
 P.forEach(it=>{if(cache[it.id])it.img=cache[it.id]});
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const tryImg=u=>new Promise(r=>{const i=new Image();i.onload=()=>r(true);i.onerror=()=>r(false);i.src=u});
+const ALT={11:["Untitled"],13:["Queen of Soul"],12:["Diana Ross and the Supremes Greatest Hits"],14:["Pink Floyd: Live at Pompeii"],15:["Gimme Shelter (soundtrack)"]};
+function status(){const n=P.filter(p=>p.img).length,el=document.getElementById("cvs");if(el)el.textContent=`Cover lookup: ${n} of ${P.length} found`}
 async function enrich(){
+ status();
  for(const it of P){ if(it.img)continue;
-  try{const q=`releasegroup:"${it.title}" AND artist:"${it.artist}"`;
-   const r=await fetch(`https://musicbrainz.org/ws/2/release-group/?query=${encodeURIComponent(q)}&fmt=json&limit=3`);
-   if(r.ok){const j=await r.json();
-    for(const g of j["release-groups"]||[]){const u=`https://coverartarchive.org/release-group/${g.id}/front-500`;
-     if(await tryImg(u)){it.img=u;cache[it.id]=u;try{localStorage.setItem(CK,JSON.stringify(cache))}catch(e){}
-      document.querySelectorAll(`[data-cv="${it.id}"]`).forEach(el=>el.outerHTML=cover(it));break}}}
-  }catch(e){}
-  await sleep(1100)}}
+  const qs=[`releasegroup:"${it.title}" AND artist:"${it.artist}" AND firstreleasedate:${it.year}`,`releasegroup:"${it.title}" AND artist:"${it.artist}"`,...(ALT[it.id]||[]).map(t=>`releasegroup:"${t}" AND artist:"${it.artist}"`)];
+  for(const q of qs){ if(it.img)break;
+   try{const r=await fetch(`https://musicbrainz.org/ws/2/release-group/?query=${encodeURIComponent(q)}&fmt=json&limit=5`);
+    if(r.ok){const j=await r.json();
+     for(const g of j["release-groups"]||[]){const u=`https://coverartarchive.org/release-group/${g.id}/front-500`;
+      if(await tryImg(u)){it.img=u;cache[it.id]=u;try{localStorage.setItem(CK,JSON.stringify(cache))}catch(e){}
+       document.querySelectorAll(`[data-cv="${it.id}"]`).forEach(el=>el.outerHTML=cover(it));status();break}}}
+   }catch(e){}
+   await sleep(1100)}}
+ status()}
 route();
 enrich();
 </script>
