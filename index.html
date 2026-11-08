@@ -5,17 +5,18 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: ivory shop floor with a burgundy hero and walnut footer. Brass is the only accent line. Department colour: vinyl burgundy, CDs olive, DVDs walnut. */
-:root{--ivory:#f6efe0;--paper:#fbf6ea;--cream:#eadfc3;--burg:#4a1020;--burg2:#6a1a2e;--walnut:#2b1b13;--orange:#b8531f;--olive:#5d5f33;
---brass:#a8843f;--brass-l:#c9a45c;--brass-t:#7a5c1e;--ink:#2a1a12;--muted:#6f5d4e;--line:#d8c8a6;--ok:#4d5d2a;
+:root{--ivory:#f7f1e1;--paper:#fcf8ee;--cream:#eee4c8;--burg:#3b2f6e;--burg2:#52428f;--walnut:#231a4a;--orange:#e75e17;--olive:#1f7a66;
+--toolbox:#7d6cb9;--keppel:#3eb197;--lime:#b5c02b;--sun:#ebcb00;
+--brass:#ebcb00;--brass-l:#ebcb00;--brass-t:#5d4da0;--ink:#1f1838;--muted:#6a6283;--line:#ddd2b4;--ok:#1f7a66;
 --display:"Libre Caslon Display","Libre Caslon Text",Georgia,serif;--text:"Libre Caslon Text",Georgia,serif;--sans:"Libre Franklin",Helvetica,Arial,sans-serif;color-scheme:light}
 *{box-sizing:border-box}
 body{background:var(--ivory) var(--grain,none);color:var(--ink);font:16px/1.55 var(--sans);margin:0;-webkit-font-smoothing:antialiased}
 a{color:inherit}button{font:inherit;cursor:pointer;color:inherit}
 :focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 .wrap{max-width:1240px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
-.note-bar{background:var(--orange);color:#fff;font-size:13px;font-weight:500}
+.note-bar{background:var(--orange);color:var(--walnut);font-size:13px;font-weight:500}
 .note-bar .wrap{padding-block:7px}
-.util{background:var(--walnut);color:#d9c9a8;font-size:12.5px;letter-spacing:.02em}
+.util{background:var(--walnut);color:#d4cdee;font-size:12.5px;letter-spacing:.02em}
 .util .wrap{display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap;padding-block:7px}
 .util span+span::before{content:"";}
 header.top{background:var(--ivory);border-bottom:1px solid var(--line)}
@@ -41,6 +42,7 @@ nav.dept ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap}
 nav.dept>.wrap>ul>li{position:relative}
 nav.dept a.t{display:block;padding:14px 18px;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap}
 nav.dept li:hover>a.t,nav.dept li:focus-within>a.t{background:var(--burg2)}
+nav.dept::after{content:"";display:block;height:6px;background:linear-gradient(90deg,#7d6cb9 0 20%,#3eb197 0 40%,#b5c02b 0 60%,#ebcb00 0 80%,#e75e17 0)}
 nav.dept .sep{width:1px;background:rgba(246,239,224,.25);margin:10px 8px}
 nav.dept .dd{display:none;position:absolute;left:0;top:100%;background:var(--paper);color:var(--ink);min-width:230px;border:1px solid var(--line);border-top:3px solid var(--brass);box-shadow:0 18px 36px -14px rgba(43,27,19,.45);z-index:20;padding:10px 0}
 nav.dept li:hover>.dd,nav.dept li:focus-within>.dd{display:block}
@@ -58,10 +60,10 @@ h3{font-size:1.15rem}
 .btn.line{background:transparent;color:inherit;border-color:currentColor}.btn.line:hover{background:rgba(255,255,255,.08)}
 .btn.sm{padding:9px 16px;font-size:12px}
 .hero{background:var(--burg);color:var(--ivory);position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;inset:14px;border:1px solid rgba(201,164,92,.5);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:14px;border:1px solid rgba(235,203,0,.5);pointer-events:none}
 .hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-block:76px}
 .hero h1{font-size:clamp(2.7rem,5.6vw,5rem);text-transform:uppercase;letter-spacing:.012em;line-height:1.02}
-.hero p{font-family:var(--text);font-size:1.12rem;color:#e6d8bb;max-width:46ch;margin:22px 0 32px;line-height:1.7}
+.hero p{font-family:var(--text);font-size:1.12rem;color:#e4def5;max-width:46ch;margin:22px 0 32px;line-height:1.7}
 .hero .ctas{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
 .hero .ctas a.l{color:var(--brass-l);font-weight:600;text-underline-offset:5px}
 .stack{position:relative;height:430px}
@@ -81,15 +83,15 @@ section.sec{margin-top:76px}
 .dcard .art svg{width:62%;max-width:230px}
 .dcard .body{padding:6px 28px 28px}
 .dcard h3{font-size:2rem;margin-bottom:10px}
-.dcard ul{list-style:none;margin:0 0 18px;padding:0;color:#e0d2b4;font-size:14.5px;display:flex;flex-wrap:wrap;gap:2px 14px}
+.dcard ul{list-style:none;margin:0 0 18px;padding:0;color:#e0dbf2;font-size:14.5px;display:flex;flex-wrap:wrap;gap:2px 14px}
 .dcard .go{font-size:12.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--brass-l);border-bottom:1.5px solid var(--brass-l);padding-bottom:3px}
-.dcard::after{content:"";position:absolute;inset:10px;border:1px solid rgba(201,164,92,.35);pointer-events:none;transition:.2s}
+.dcard::after{content:"";position:absolute;inset:10px;border:1px solid rgba(235,203,0,.35);pointer-events:none;transition:.2s}
 .dcard:hover::after{border-color:var(--brass-l)}
 .decades{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .dec{display:flex;flex-direction:column;justify-content:space-between;min-height:210px;padding:24px;text-decoration:none;border-radius:2px;position:relative;overflow:hidden}
 .dec b{font-family:var(--display);font-weight:400;font-size:3.6rem;line-height:1}
 .dec span{font-size:14px;max-width:24ch}
-.dec:nth-child(1){background:var(--orange);color:#fff}.dec:nth-child(2){background:var(--cream);color:var(--burg)}.dec:nth-child(3){background:var(--olive);color:#f2ecd8}.dec:nth-child(4){background:var(--walnut);color:var(--brass-l)}
+.dec:nth-child(1){background:var(--orange);color:var(--walnut)}.dec:nth-child(2){background:var(--toolbox);color:#fff}.dec:nth-child(3){background:var(--lime);color:var(--walnut)}.dec:nth-child(4){background:var(--walnut);color:var(--sun)}
 .dec::before{content:"";position:absolute;right:-40px;bottom:-40px;width:150px;height:150px;border-radius:50%;box-shadow:0 0 0 12px rgba(255,255,255,.07),0 0 0 26px rgba(255,255,255,.05);}
 .colls{display:grid;grid-template-columns:repeat(3,1fr);gap:0 36px}
 .coll{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none}
@@ -131,9 +133,9 @@ section.sec{margin-top:76px}
 .dhead.v{background:var(--burg)}.dhead.c{background:var(--olive)}.dhead.d{background:var(--walnut)}
 .dhead .crumbs{font-size:13px;color:rgba(246,239,224,.75)}.dhead .crumbs a{text-underline-offset:3px}
 .dhead h1{font-size:clamp(2.6rem,5vw,4.2rem);margin:10px 0 12px}
-.dhead p{font-family:var(--text);max-width:60ch;color:#e6d8bb;margin:0 0 30px;line-height:1.7}
+.dhead p{font-family:var(--text);max-width:60ch;color:#e4def5;margin:0 0 30px;line-height:1.7}
 .tabs{display:flex;gap:2px;flex-wrap:wrap;overflow-x:auto}
-.tabs button{background:rgba(0,0,0,.2);border:0;color:#e6d8bb;padding:13px 20px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px 2px 0 0;white-space:nowrap}
+.tabs button{background:rgba(0,0,0,.2);border:0;color:#e4def5;padding:13px 20px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px 2px 0 0;white-space:nowrap}
 .tabs button.on{background:var(--ivory);color:var(--burg)}
 .dlayout{display:grid;grid-template-columns:250px 1fr;gap:44px;padding-top:36px}
 .filters{display:flex;flex-direction:column;gap:26px;align-content:start}
@@ -165,13 +167,13 @@ select.s{font:inherit;padding:9px 12px;border:1.5px solid var(--ink);background:
 details.prev{margin-top:76px;border:1px solid var(--line);background:var(--paper);padding:22px 26px}
 details.prev summary{cursor:pointer;font-family:var(--display);font-size:1.4rem;color:var(--burg)}
 details.prev ul{font-family:var(--text);line-height:1.75;margin:14px 0 0;padding-left:20px;max-width:90ch}
-footer.site{background:var(--walnut);color:#d9c9a8;margin-top:0}
+footer.site{background:var(--walnut);color:#d4cdee;margin-top:0}
 footer.site .wrap{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;padding-block:56px 36px}
 footer.site h4{font-family:var(--sans);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-l);margin:0 0 14px}
 footer.site a{display:block;text-decoration:none;padding:4px 0;font-size:15px}footer.site a:hover{color:#fff}
 footer.site .fb{display:flex;gap:14px;align-items:center;margin-bottom:14px}.footer-seal{width:84px;height:84px;flex:none}
 footer.site .fb b{font-family:var(--display);font-weight:400;font-size:2rem;color:var(--ivory)}
-footer.site .legal{border-top:1px solid rgba(201,164,92,.3);font-size:13px;padding-block:18px;color:#a8977a}
+footer.site .legal{border-top:1px solid rgba(235,203,0,.3);font-size:13px;padding-block:18px;color:#a79fc8}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--walnut);color:var(--ivory);border-left:4px solid var(--brass-l);padding:13px 20px;border-radius:2px;font-weight:500;z-index:50;max-width:92vw;box-shadow:0 14px 30px rgba(0,0,0,.35)}
 @media(max-width:980px){
  .g4{grid-template-columns:repeat(2,1fr)!important}
@@ -216,7 +218,7 @@ footer.site .legal{border-top:1px solid rgba(201,164,92,.3);font-size:13px;paddi
 <div id="toast" class="toast" hidden></div>
 
 <script>
-const SEAL=(text=true)=>`<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MediaHog"><defs><path id="aT" d="M16.2 60 a43.8 43.8 0 0 1 87.6 0"/><path id="aB" d="M9.5 60 a50.5 50.5 0 0 0 101 0"/></defs><circle cx="60" cy="60" r="58" fill="#4a1020"/><circle cx="60" cy="60" r="56.2" fill="none" stroke="#c9a45c" stroke-width="1.6"/><circle cx="60" cy="60" r="38.5" fill="none" stroke="#c9a45c" stroke-width=".8"/><g font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="600" fill="#e8d3a2"><text font-size="9" letter-spacing="3.4" text-anchor="middle"><textPath href="#aT" startOffset="50%">MEDIAHOG</textPath></text><text font-size="6.6" letter-spacing="2.6" text-anchor="middle"><textPath href="#aB" startOffset="50%">VINYL · CD · DVD</textPath></text></g><g transform="translate(60 61) scale(.86) translate(-60 -60)"><path d="M37 56 Q27 41 37 35 Q48 33 53 47 Z" fill="#f3e8d0" stroke="#4a1020" stroke-width="1.4" stroke-linejoin="round"/><path d="M83 56 Q93 41 83 35 Q72 33 67 47 Z" fill="#f3e8d0" stroke="#4a1020" stroke-width="1.4" stroke-linejoin="round"/><path d="M40 50 Q36 41 41 38.5" fill="none" stroke="#c9806a" stroke-width="2.2" stroke-linecap="round"/><path d="M80 50 Q84 41 79 38.5" fill="none" stroke="#c9806a" stroke-width="2.2" stroke-linecap="round"/><path d="M36 64 C36 44 84 44 84 64 C84 83 73 90 60 90 C47 90 36 83 36 64 Z" fill="#f3e8d0" stroke="#4a1020" stroke-width="1.4"/><path d="M30 66 C28 30 92 30 90 66" fill="none" stroke="#c9a45c" stroke-width="3.6" stroke-linecap="round"/><path d="M30 66 C28 30 92 30 90 66" fill="none" stroke="#4a1020" stroke-width=".7" stroke-linecap="round" opacity=".55"/><rect x="23.5" y="57" width="12" height="23" rx="5.5" fill="#c9a45c" stroke="#4a1020" stroke-width="1.2"/><rect x="84.5" y="57" width="12" height="23" rx="5.5" fill="#c9a45c" stroke="#4a1020" stroke-width="1.2"/><rect x="26.5" y="61" width="6" height="15" rx="3" fill="#4a1020" opacity=".85"/><rect x="87.5" y="61" width="6" height="15" rx="3" fill="#4a1020" opacity=".85"/><path d="M44.5 63 q4.5 3.6 9 0" fill="none" stroke="#4a1020" stroke-width="1.9" stroke-linecap="round"/><path d="M66.5 63 q4.5 3.6 9 0" fill="none" stroke="#4a1020" stroke-width="1.9" stroke-linecap="round"/><ellipse cx="60" cy="76" rx="11" ry="8.2" fill="#c9806a" stroke="#4a1020" stroke-width="1.3"/><ellipse cx="55.8" cy="76" rx="1.9" ry="3.1" fill="#4a1020"/><ellipse cx="64.2" cy="76" rx="1.9" ry="3.1" fill="#4a1020"/><path d="M44 78 q-1 5 3 8 M76 78 q1 5 -3 8" fill="none" stroke="#4a1020" stroke-width=".9" stroke-linecap="round" opacity=".5"/></g></svg>`;
+const SEAL=(text=true)=>`<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MediaHog"><defs><path id="aT" d="M16.2 60 a43.8 43.8 0 0 1 87.6 0"/><path id="aB" d="M9.5 60 a50.5 50.5 0 0 0 101 0"/></defs><circle cx="60" cy="60" r="58" fill="#3b2f6e"/><circle cx="60" cy="60" r="56.2" fill="none" stroke="#ebcb00" stroke-width="1.6"/><circle cx="60" cy="60" r="38.5" fill="none" stroke="#ebcb00" stroke-width=".8"/><g font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="600" fill="#f3e7a8"><text font-size="9" letter-spacing="3.4" text-anchor="middle"><textPath href="#aT" startOffset="50%">MEDIAHOG</textPath></text><text font-size="6.6" letter-spacing="2.6" text-anchor="middle"><textPath href="#aB" startOffset="50%">VINYL · CD · DVD</textPath></text></g><g transform="translate(60 61) scale(.86) translate(-60 -60)"><path d="M37 56 Q27 41 37 35 Q48 33 53 47 Z" fill="#f3e8d0" stroke="#3b2f6e" stroke-width="1.4" stroke-linejoin="round"/><path d="M83 56 Q93 41 83 35 Q72 33 67 47 Z" fill="#f3e8d0" stroke="#3b2f6e" stroke-width="1.4" stroke-linejoin="round"/><path d="M40 50 Q36 41 41 38.5" fill="none" stroke="#e8845a" stroke-width="2.2" stroke-linecap="round"/><path d="M80 50 Q84 41 79 38.5" fill="none" stroke="#e8845a" stroke-width="2.2" stroke-linecap="round"/><path d="M36 64 C36 44 84 44 84 64 C84 83 73 90 60 90 C47 90 36 83 36 64 Z" fill="#f3e8d0" stroke="#3b2f6e" stroke-width="1.4"/><path d="M30 66 C28 30 92 30 90 66" fill="none" stroke="#ebcb00" stroke-width="3.6" stroke-linecap="round"/><path d="M30 66 C28 30 92 30 90 66" fill="none" stroke="#3b2f6e" stroke-width=".7" stroke-linecap="round" opacity=".55"/><rect x="23.5" y="57" width="12" height="23" rx="5.5" fill="#ebcb00" stroke="#3b2f6e" stroke-width="1.2"/><rect x="84.5" y="57" width="12" height="23" rx="5.5" fill="#ebcb00" stroke="#3b2f6e" stroke-width="1.2"/><rect x="26.5" y="61" width="6" height="15" rx="3" fill="#3b2f6e" opacity=".85"/><rect x="87.5" y="61" width="6" height="15" rx="3" fill="#3b2f6e" opacity=".85"/><path d="M44.5 63 q4.5 3.6 9 0" fill="none" stroke="#3b2f6e" stroke-width="1.9" stroke-linecap="round"/><path d="M66.5 63 q4.5 3.6 9 0" fill="none" stroke="#3b2f6e" stroke-width="1.9" stroke-linecap="round"/><ellipse cx="60" cy="76" rx="11" ry="8.2" fill="#e8845a" stroke="#3b2f6e" stroke-width="1.3"/><ellipse cx="55.8" cy="76" rx="1.9" ry="3.1" fill="#3b2f6e"/><ellipse cx="64.2" cy="76" rx="1.9" ry="3.1" fill="#3b2f6e"/><path d="M44 78 q-1 5 3 8 M76 78 q1 5 -3 8" fill="none" stroke="#3b2f6e" stroke-width=".9" stroke-linecap="round" opacity=".5"/></g></svg>`;
 document.getElementById("hSeal").innerHTML=SEAL();document.getElementById("fSeal").innerHTML=SEAL();
 try{const g=`<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .22  0 0 0 0 .1  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(#n)'/></svg>`;document.documentElement.style.setProperty("--grain",`url("data:image/svg+xml,${encodeURIComponent(g)}")`)}catch(e){}
 
@@ -240,7 +242,7 @@ const P=[
 {id:16,f:"dvd",sub:"Films",artist:"Directed by A. Fenwick",title:"The Last Pressing",year:1975,genre:"Soundtracks",price:900,label:"Reel House",cat:"RH 118",country:"UK",c:{"Disc":"VG+","Case":"VG+","Region":"Region 2","Format":"PAL, 4:3"},notes:"Feature film with original soundtrack score."},
 {id:17,f:"dvd",sub:"Music DVDs",artist:"Ibrahim Okoro Ensemble",title:"An Evening in Lagos",year:1998,genre:"Jazz",price:1200,label:"Blue Door",cat:"BDDVD 7",country:"UK",c:{"Disc":"NM","Case":"VG+","Region":"All regions","Format":"PAL, widescreen"},notes:"Studio performance recorded in front of an audience."}
 ];
-const SC=[["#4a1020","#eadfc3","#c9a45c","#f6efe0"],["#eadfc3","#b8531f","#2b1b13","#2b1b13"],["#5d5f33","#eadfc3","#c9a45c","#f2ecd8"],["#2b1b13","#c9a45c","#b8531f","#eadfc3"],["#b8531f","#2b1b13","#eadfc3","#fff"],["#eadfc3","#4a1020","#5d5f33","#4a1020"],["#6a1a2e","#c9a45c","#eadfc3","#f6efe0"]];
+const SC=[["#3b2f6e","#ebcb00","#3eb197","#fff6d6"],["#eee4c8","#e75e17","#3b2f6e","#231a4a"],["#3eb197","#3b2f6e","#ebcb00","#0f2a23"],["#7d6cb9","#ebcb00","#e75e17","#ffffff"],["#e75e17","#3b2f6e","#eee4c8","#231a4a"],["#b5c02b","#3b2f6e","#e75e17","#231a4a"],["#231a4a","#b5c02b","#7d6cb9","#eee4c8"]];
 function pic(it){const[A,B,C]=SC[it.id%SC.length],s=it.id%5;
  return [`radial-gradient(circle at 50% 50%,${C} 0 7%,transparent 7.5%),radial-gradient(circle at 50% 50%,${B} 0 30%,transparent 30.5%),${A}`,
  `linear-gradient(90deg,transparent 0 47%,${C} 47% 53%,transparent 53%),linear-gradient(90deg,${A} 0 50%,${B} 50%)`,
@@ -269,9 +271,9 @@ V.home=()=>{const n=[...P].reverse();
  <div class="stack" aria-hidden="true"><div class="it a">${cover(P[0])}</div><div class="it b">${cover(P[10])}</div><div class="it c">${cover(P[13])}</div><span class="cap">Placeholder artwork</span></div></div></section>
  <div class="wrap">
  <section class="sec"><div class="sec-h"><div><h2>Shop by format</h2><p>Three departments, each with its own way to browse.</p></div></div><div class="depts">
-  <a class="dcard v" href="#vinyl"><div class="art"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" fill="#1a0b10"/><g fill="none" stroke="#6a1a2e" stroke-width="1.2"><circle cx="100" cy="100" r="86"/><circle cx="100" cy="100" r="76"/><circle cx="100" cy="100" r="66"/><circle cx="100" cy="100" r="56"/></g><circle cx="100" cy="100" r="34" fill="#c9a45c"/><circle cx="100" cy="100" r="30" fill="none" stroke="#4a1020" stroke-width="1"/><circle cx="100" cy="100" r="5" fill="#4a1020"/></svg></div><div class="body"><h3>Vinyl records</h3><ul><li>LPs</li><li>12-inch singles</li><li>7-inch singles</li><li>Box sets</li><li>Collectable vinyl</li></ul><span class="go">Enter the department</span></div></a>
-  <a class="dcard c" href="#cds"><div class="art"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" fill="#d9d6c4"/><circle cx="100" cy="100" r="96" fill="none" stroke="#a9a68f" stroke-width="2"/><circle cx="100" cy="100" r="88" fill="none" stroke="#c9a45c" stroke-width="1.2" opacity=".7"/><circle cx="100" cy="100" r="34" fill="#5d5f33"/><circle cx="100" cy="100" r="14" fill="#eadfc3"/><path d="M100 100 L100 6 A94 94 0 0 1 180 54 Z" fill="#fff" opacity=".18"/><path d="M100 100 L100 194 A94 94 0 0 1 20 146 Z" fill="#fff" opacity=".12"/></svg></div><div class="body"><h3>CDs</h3><ul><li>Albums</li><li>Singles</li><li>Double CDs</li><li>Box sets</li><li>Compilation albums</li></ul><span class="go">Enter the department</span></div></a>
-  <a class="dcard d" href="#dvds"><div class="art"><svg viewBox="0 0 200 200"><rect x="30" y="20" width="140" height="160" rx="3" fill="#1a0f0a" stroke="#c9a45c" stroke-width="1.5"/><g fill="#2b1b13">${[0,1,2,3,4,5,6,7].map(i=>`<rect x="36" y="${30+i*18}" width="9" height="11" rx="1.5"/><rect x="155" y="${30+i*18}" width="9" height="11" rx="1.5"/>`).join("")}</g><rect x="56" y="34" width="88" height="62" fill="#b8531f"/><rect x="56" y="104" width="88" height="62" fill="#5d5f33"/><circle cx="100" cy="65" r="16" fill="#eadfc3" opacity=".9"/></svg></div><div class="body"><h3>DVDs &amp; Films</h3><ul><li>Films</li><li>Music DVDs</li><li>Live concerts</li><li>Documentaries</li><li>Box sets</li></ul><span class="go">Enter the department</span></div></a>
+  <a class="dcard v" href="#vinyl"><div class="art"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" fill="#120d2a"/><g fill="none" stroke="#52428f" stroke-width="1.2"><circle cx="100" cy="100" r="86"/><circle cx="100" cy="100" r="76"/><circle cx="100" cy="100" r="66"/><circle cx="100" cy="100" r="56"/></g><circle cx="100" cy="100" r="34" fill="#ebcb00"/><circle cx="100" cy="100" r="30" fill="none" stroke="#3b2f6e" stroke-width="1"/><circle cx="100" cy="100" r="5" fill="#3b2f6e"/></svg></div><div class="body"><h3>Vinyl records</h3><ul><li>LPs</li><li>12-inch singles</li><li>7-inch singles</li><li>Box sets</li><li>Collectable vinyl</li></ul><span class="go">Enter the department</span></div></a>
+  <a class="dcard c" href="#cds"><div class="art"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" fill="#d9d6c4"/><circle cx="100" cy="100" r="96" fill="none" stroke="#a9a68f" stroke-width="2"/><circle cx="100" cy="100" r="88" fill="none" stroke="#ebcb00" stroke-width="1.2" opacity=".7"/><circle cx="100" cy="100" r="34" fill="#1f7a66"/><circle cx="100" cy="100" r="14" fill="#eadfc3"/><path d="M100 100 L100 6 A94 94 0 0 1 180 54 Z" fill="#fff" opacity=".18"/><path d="M100 100 L100 194 A94 94 0 0 1 20 146 Z" fill="#fff" opacity=".12"/></svg></div><div class="body"><h3>CDs</h3><ul><li>Albums</li><li>Singles</li><li>Double CDs</li><li>Box sets</li><li>Compilation albums</li></ul><span class="go">Enter the department</span></div></a>
+  <a class="dcard d" href="#dvds"><div class="art"><svg viewBox="0 0 200 200"><rect x="30" y="20" width="140" height="160" rx="3" fill="#120d2a" stroke="#ebcb00" stroke-width="1.5"/><g fill="#231a4a">${[0,1,2,3,4,5,6,7].map(i=>`<rect x="36" y="${30+i*18}" width="9" height="11" rx="1.5"/><rect x="155" y="${30+i*18}" width="9" height="11" rx="1.5"/>`).join("")}</g><rect x="56" y="34" width="88" height="62" fill="#e75e17"/><rect x="56" y="104" width="88" height="62" fill="#1f7a66"/><circle cx="100" cy="65" r="16" fill="#eadfc3" opacity=".9"/></svg></div><div class="body"><h3>DVDs &amp; Films</h3><ul><li>Films</li><li>Music DVDs</li><li>Live concerts</li><li>Documentaries</li><li>Box sets</li></ul><span class="go">Enter the department</span></div></a>
  </div></section>
  <section class="sec"><div class="sec-h"><div><h2>Shop by decade</h2><p>Mostly the sixties and seventies, with the years either side where stock allows.</p></div></div><div class="decades">
   <a class="dec" href="#vinyl?d=1960s"><b>1960s</b><span>Beat, soul, early rock and the first great albums.</span></a><a class="dec" href="#vinyl?d=1970s"><b>1970s</b><span>Progressive, funk, singer-songwriters and disco.</span></a><a class="dec" href="#vinyl?d=1980s"><b>1980s</b><span>Pop, new wave and the CD era begins.</span></a><a class="dec" href="#vinyl"><b>Beyond</b><span>Other decades, wherever the stock supports it.</span></a></div></section>
