@@ -113,6 +113,7 @@ section.sec{margin-top:76px}
 /* covers */
 .case{position:relative;width:100%;height:100%;display:grid;place-items:center}
 .cover{container-type:size;display:flex;flex-direction:column;position:relative;box-shadow:0 10px 18px -8px rgba(43,27,19,.55),inset 0 0 0 1px rgba(0,0,0,.12);overflow:hidden}
+.cover.real{display:block;background:#1f1838}.cover.real img{width:100%;height:100%;object-fit:cover;display:block}
 .cover .pic{flex:1 1 68%}
 .cover .txt{flex:0 0 34%;padding:5cqw 7cqw;display:flex;flex-direction:column;justify-content:center;gap:1cqw;overflow:hidden}
 .cover .txt i{font-style:normal;font-family:var(--sans);font-weight:600;font-size:5.2cqw;letter-spacing:.14em;text-transform:uppercase;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -189,7 +190,7 @@ footer.site .legal{border-top:1px solid rgba(235,203,0,.3);font-size:13px;paddin
 @media(max-width:560px){.decades{grid-template-columns:1fr}footer.site .wrap{grid-template-columns:1fr}}
 </style></head><body>
 
-<div class="note-bar"><div class="wrap"><b>Design preview.</b> The records, CDs and DVDs below are placeholders to show layout. The live shop shows your imported Discogs catalogue.</div></div>
+<div class="note-bar"><div class="wrap"><b>Design preview.</b> Sample listings only: real albums with covers found automatically through MusicBrainz and the Cover Art Archive. Prices, conditions and stock are placeholders, not your inventory.</div></div>
 <div class="util"><div class="wrap"><span>Vinyl records, CDs and DVDs, graded and described by a specialist</span><span>UK and international delivery &nbsp;|&nbsp; Customer support</span></div></div>
 <header class="top"><div class="wrap bar">
  <a class="brand" href="#home" aria-label="MediaHog home"><span class="seal" id="hSeal"></span><span class="wm"><b>MediaHog</b><small>Independent music</small></span></a>
@@ -214,7 +215,7 @@ footer.site .legal{border-top:1px solid rgba(235,203,0,.3);font-size:13px;paddin
  <div><h4>Shop</h4><a href="#vinyl">Vinyl records</a><a href="#cds">CDs</a><a href="#dvds">DVDs &amp; films</a><a href="#vinyl">New arrivals</a></div>
  <div><h4>Help</h4><a href="#home">Delivery</a><a href="#home">Returns</a><a href="#home">Customer support</a><a href="#home">Contact</a></div>
  <div><h4>MediaHog</h4><a href="#home">About MediaHog</a><a href="#home">Privacy</a><a href="#home">Terms</a></div>
-</div><div class="wrap legal">© MediaHog. mediahog.co.uk</div></footer>
+</div><div class="wrap legal">© MediaHog. mediahog.co.uk &nbsp;|&nbsp; Preview covers: Cover Art Archive. Release data: MusicBrainz.</div></footer>
 <div id="toast" class="toast" hidden></div>
 
 <script>
@@ -222,25 +223,24 @@ const SEAL=(text=true)=>`<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/200
 document.getElementById("hSeal").innerHTML=SEAL();document.getElementById("fSeal").innerHTML=SEAL();
 try{const g=`<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .22  0 0 0 0 .1  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(#n)'/></svg>`;document.documentElement.style.setProperty("--grain",`url("data:image/svg+xml,${encodeURIComponent(g)}")`)}catch(e){}
 
-/* Placeholder products. Names are invented and carry no real stock. */
+/* Sample listings: real albums so the artwork lookup can be shown. Prices, conditions and stock are placeholders. */
 const P=[
-{id:1,f:"vinyl",sub:"LPs",artist:"The Harbour Lights",title:"Salt and Starlight",year:1968,genre:"Classic Rock",price:2800,label:"Meridian",cat:"MER 1047",country:"UK",c:{"Media":"VG+","Sleeve":"VG"},notes:"Plays through with light surface noise on the second side only. Sleeve has gentle ring wear and a clean spine. Original inner sleeve included."},
-{id:2,f:"vinyl",sub:"LPs",artist:"Marianne Coyle",title:"Winter Kitchen",year:1971,genre:"Folk",price:2200,label:"Lantern",cat:"LAN 204",country:"UK",c:{"Media":"NM","Sleeve":"VG+"},notes:"A clean copy. Sleeve shows slight edge wear."},
-{id:3,f:"vinyl",sub:"LPs",artist:"Delroy Vance & the Rhythm Kings",title:"Sunday Soul Session",year:1969,genre:"Soul & Motown",price:3600,label:"Crown Soul",cat:"CS 1012",country:"US",c:{"Media":"VG+","Sleeve":"VG+"},notes:"Strong pressing with a bright, full sound."},
-{id:4,f:"vinyl",sub:"7-inch singles",artist:"The Velvet Reeds",title:"Paper Moon",year:1966,genre:"Pop Classics",price:900,label:"Meridian",cat:"MER 7-221",country:"UK",c:{"Media":"VG","Sleeve":"VG"},notes:"Plays well. Original company sleeve."},
-{id:5,f:"vinyl",sub:"LPs",artist:"Ostrander",title:"Long Road to Anywhere",year:1974,genre:"Progressive Rock",price:3200,label:"Atlas",cat:"ATL 3301",country:"UK",c:{"Media":"NM","Sleeve":"NM"},notes:"Gatefold sleeve with both inserts present."},
-{id:6,f:"vinyl",sub:"12-inch singles",artist:"Chrome Parade",title:"Midnight Dancer (Extended)",year:1979,genre:"Funk & Disco",price:1500,label:"Glitterhouse",cat:"GH 12-88",country:"UK",c:{"Media":"VG+","Sleeve":"VG+"},notes:"Extended mix on the A-side."},
-{id:7,f:"vinyl",sub:"Collectable vinyl",artist:"The Marlowe Set",title:"First Light",year:1967,genre:"Classic Rock",price:11500,label:"Pavilion",cat:"PAV 9001",country:"UK",c:{"Media":"VG+","Sleeve":"VG"},notes:"An early pressing and a scarce title. Sleeve has some seam splits that have been reinforced."},
-{id:8,f:"vinyl",sub:"LPs",artist:"Ibrahim Okoro Ensemble",title:"River Suite",year:1973,genre:"Jazz",price:2600,label:"Blue Door",cat:"BD 410",country:"UK",c:{"Media":"VG+","Sleeve":"VG+"},notes:"Quiet playing copy."},
-{id:9,f:"cd",sub:"Albums",artist:"Marianne Coyle",title:"Winter Kitchen (Remastered)",year:1971,genre:"Folk",price:900,label:"Lantern",cat:"LANCD 204",country:"UK",c:{"Disc":"NM","Case":"VG+","Booklet":"NM"},notes:"Remastered edition with the original booklet."},
-{id:10,f:"cd",sub:"Double CDs",artist:"Various Artists",title:"Soul Selections Volume Two",year:1996,genre:"Soul & Motown",price:1100,label:"Crown Soul",cat:"CSCD 2",country:"UK",c:{"Disc":"NM","Case":"NM","Booklet":"VG+"},notes:"Two discs, both play perfectly."},
-{id:11,f:"cd",sub:"Albums",artist:"Ostrander",title:"Long Road to Anywhere",year:1974,genre:"Progressive Rock",price:800,label:"Atlas",cat:"ATLCD 3301",country:"UK",c:{"Disc":"VG+","Case":"VG","Booklet":"VG+"},notes:"Case has a small crack to the rear tray."},
-{id:12,f:"cd",sub:"Compilation albums",artist:"The Harbour Lights",title:"The Very Best Of",year:1982,genre:"Pop Classics",price:700,label:"Meridian",cat:"MERCD 40",country:"UK",c:{"Disc":"NM","Case":"VG+","Booklet":"VG+"},notes:"Compilation of the group's singles."},
-{id:13,f:"cd",sub:"Box sets",artist:"Delroy Vance",title:"The Complete Sessions",year:1969,genre:"Soul & Motown",price:4200,label:"Crown Soul",cat:"CSBOX 1",country:"UK",c:{"Disc":"NM","Case":"NM","Booklet":"NM"},notes:"Four-disc box set with numbered booklet."},
-{id:14,f:"dvd",sub:"Live concerts",artist:"Chrome Parade",title:"Live at the Palladium",year:1980,genre:"Funk & Disco",price:1400,label:"Screenland",cat:"SCR 551",country:"UK",c:{"Disc":"NM","Case":"VG+","Region":"Region 2","Format":"PAL, widescreen"},notes:"Full concert filmed in 1980."},
-{id:15,f:"dvd",sub:"Documentaries",artist:"The Marlowe Set",title:"Echoes: The Story of a Sixties Band",year:2004,genre:"Classic Rock",price:1000,label:"Screenland",cat:"SCR 702",country:"UK",c:{"Disc":"NM","Case":"NM","Region":"Region 2","Format":"PAL, 16:9"},notes:"Documentary with archive footage and interviews."},
-{id:16,f:"dvd",sub:"Films",artist:"Directed by A. Fenwick",title:"The Last Pressing",year:1975,genre:"Soundtracks",price:900,label:"Reel House",cat:"RH 118",country:"UK",c:{"Disc":"VG+","Case":"VG+","Region":"Region 2","Format":"PAL, 4:3"},notes:"Feature film with original soundtrack score."},
-{id:17,f:"dvd",sub:"Music DVDs",artist:"Ibrahim Okoro Ensemble",title:"An Evening in Lagos",year:1998,genre:"Jazz",price:1200,label:"Blue Door",cat:"BDDVD 7",country:"UK",c:{"Disc":"NM","Case":"VG+","Region":"All regions","Format":"PAL, widescreen"},notes:"Studio performance recorded in front of an audience."}
+{id:1,f:"vinyl",sub:"LPs",artist:"The Beatles",title:"Revolver",year:1966,genre:"Classic Rock",price:3200,c:{"Media": "VG+", "Sleeve": "VG"},notes:"Seller notes from your Discogs comments appear here."},
+{id:2,f:"vinyl",sub:"LPs",artist:"Marvin Gaye",title:"What's Going On",year:1971,genre:"Soul & Motown",price:2800,c:{"Media": "NM", "Sleeve": "VG+"},notes:"Seller notes from your Discogs comments appear here."},
+{id:3,f:"vinyl",sub:"LPs",artist:"Pink Floyd",title:"Wish You Were Here",year:1975,genre:"Progressive Rock",price:3400,c:{"Media": "VG+", "Sleeve": "VG+"},notes:"Seller notes from your Discogs comments appear here."},
+{id:4,f:"vinyl",sub:"7-inch singles",artist:"Dusty Springfield",title:"Son of a Preacher Man",year:1968,genre:"Pop Classics",price:900,c:{"Media": "VG", "Sleeve": "VG"},notes:"Seller notes from your Discogs comments appear here."},
+{id:5,f:"vinyl",sub:"LPs",artist:"Fleetwood Mac",title:"Rumours",year:1977,genre:"Pop Classics",price:2200,c:{"Media": "NM", "Sleeve": "VG+"},notes:"Seller notes from your Discogs comments appear here."},
+{id:6,f:"vinyl",sub:"12-inch singles",artist:"Donna Summer",title:"Hot Stuff",year:1979,genre:"Funk & Disco",price:1500,c:{"Media": "VG+", "Sleeve": "VG+"},notes:"Seller notes from your Discogs comments appear here."},
+{id:7,f:"vinyl",sub:"Collectable vinyl",artist:"The Velvet Underground",title:"The Velvet Underground & Nico",year:1967,genre:"Classic Rock",price:18500,c:{"Media": "VG", "Sleeve": "VG"},notes:"Seller notes from your Discogs comments appear here."},
+{id:8,f:"vinyl",sub:"LPs",artist:"Bob Marley & The Wailers",title:"Catch a Fire",year:1973,genre:"Reggae",price:2600,c:{"Media": "VG+", "Sleeve": "VG+"},notes:"Seller notes from your Discogs comments appear here."},
+{id:9,f:"cd",sub:"Albums",artist:"Joni Mitchell",title:"Blue",year:1971,genre:"Folk",price:900,c:{"Disc": "NM", "Case": "VG+", "Booklet": "NM"},notes:"Seller notes from your Discogs comments appear here."},
+{id:10,f:"cd",sub:"Double CDs",artist:"Stevie Wonder",title:"Songs in the Key of Life",year:1976,genre:"Soul & Motown",price:1400,c:{"Disc": "NM", "Case": "NM", "Booklet": "VG+"},notes:"Seller notes from your Discogs comments appear here."},
+{id:11,f:"cd",sub:"Albums",artist:"Led Zeppelin",title:"Led Zeppelin IV",year:1971,genre:"Classic Rock",price:800,c:{"Disc": "VG+", "Case": "VG", "Booklet": "VG+"},notes:"Seller notes from your Discogs comments appear here."},
+{id:12,f:"cd",sub:"Compilation albums",artist:"Diana Ross & The Supremes",title:"Greatest Hits",year:1967,genre:"Soul & Motown",price:700,c:{"Disc": "NM", "Case": "VG+", "Booklet": "VG+"},notes:"Seller notes from your Discogs comments appear here."},
+{id:13,f:"cd",sub:"Box sets",artist:"Aretha Franklin",title:"Queen of Soul: The Atlantic Recordings",year:1992,genre:"Soul & Motown",price:4200,c:{"Disc": "NM", "Case": "NM", "Booklet": "NM"},notes:"Seller notes from your Discogs comments appear here."},
+{id:14,f:"dvd",sub:"Live concerts",artist:"Pink Floyd",title:"Live at Pompeii",year:1972,genre:"Progressive Rock",price:1400,c:{"Disc": "NM", "Case": "VG+", "Region": "Region 2", "Format": "PAL, widescreen"},notes:"Seller notes from your Discogs comments appear here."},
+{id:15,f:"dvd",sub:"Documentaries",artist:"The Rolling Stones",title:"Gimme Shelter",year:1970,genre:"Classic Rock",price:1000,c:{"Disc": "NM", "Case": "NM", "Region": "Region 2", "Format": "PAL, 16:9"},notes:"Seller notes from your Discogs comments appear here."},
+{id:16,f:"dvd",sub:"Music DVDs",artist:"The Band",title:"The Last Waltz",year:1978,genre:"Classic Rock",price:1200,c:{"Disc": "VG+", "Case": "VG+", "Region": "Region 2", "Format": "PAL, 4:3"},notes:"Seller notes from your Discogs comments appear here."}
 ];
 const SC=[["#3b2f6e","#ebcb00","#3eb197","#fff6d6"],["#eee4c8","#e75e17","#3b2f6e","#231a4a"],["#3eb197","#3b2f6e","#ebcb00","#0f2a23"],["#7d6cb9","#ebcb00","#e75e17","#ffffff"],["#e75e17","#3b2f6e","#eee4c8","#231a4a"],["#b5c02b","#3b2f6e","#e75e17","#231a4a"],["#231a4a","#b5c02b","#7d6cb9","#eee4c8"]];
 function pic(it){const[A,B,C]=SC[it.id%SC.length],s=it.id%5;
@@ -250,7 +250,8 @@ function pic(it){const[A,B,C]=SC[it.id%SC.length],s=it.id%5;
  `radial-gradient(circle at 50% 38%,${C} 0 20%,transparent 20.5%),linear-gradient(0deg,${B} 0 30%,${A} 30% 33%,${C} 33% 35%,${A} 35%)`,
  `radial-gradient(circle at 74% 70%,${B} 0 34%,transparent 34.5%),repeating-linear-gradient(0deg,${A} 0 9px,${C} 9px 10px)`][s]}
 function cover(it){const sc=SC[it.id%SC.length];
- return `<div class="case ${it.f}"><div class="cover" style="background:${sc[0]};color:${sc[3]}"><div class="pic" style="background:${pic(it)}"></div><div class="txt" style="background:${sc[0]}"><i>${esc(it.artist)}</i><s>${esc(it.title)}</s></div></div></div>`}
+ if(it.img)return `<div class="case ${it.f}" data-cv="${it.id}"><div class="cover real"><img src="${it.img}" alt="${esc(it.title)} cover"></div></div>`;
+ return `<div class="case ${it.f}" data-cv="${it.id}"><div class="cover" style="background:${sc[0]};color:${sc[3]}"><div class="pic" style="background:${pic(it)}"></div><div class="txt" style="background:${sc[0]}"><i>${esc(it.artist)}</i><s>${esc(it.title)}</s></div></div></div>`}
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const gbp=p=>"£"+(p/100).toFixed(2);
 const DEPT={vinyl:{name:"Vinyl records",cls:"v",subs:["LPs","12-inch singles","7-inch singles","Box sets","Collectable vinyl"],blurb:"Original pressings and good later copies, graded on the Goldmine scale with the media and the sleeve described separately."},
@@ -268,7 +269,7 @@ V.home=()=>{const n=[...P].reverse();
  const cnt=g=>P.filter(p=>p.genre==g).length;
  const colls=["Rare & Collectable","Classic Rock","Soul & Motown","Funk & Disco","Jazz","Progressive Rock","Reggae","Pop Classics","Soundtracks"];
  return `<section class="hero"><div class="wrap"><div><h1>The soundtrack of your life.</h1><p>Discover classic vinyl, timeless albums, CDs and music on film. Explore our collection of music from the decades that defined generations.</p><div class="ctas"><a class="btn" href="#vinyl">Shop now</a><a class="l" href="#vinyl">See new arrivals</a></div></div>
- <div class="stack" aria-hidden="true"><div class="it a">${cover(P[0])}</div><div class="it b">${cover(P[10])}</div><div class="it c">${cover(P[13])}</div><span class="cap">Placeholder artwork</span></div></div></section>
+ <div class="stack" aria-hidden="true"><div class="it a">${cover(P[0])}</div><div class="it b">${cover(P[10])}</div><div class="it c">${cover(P[13])}</div><span class="cap">Covers via Cover Art Archive</span></div></div></section>
  <div class="wrap">
  <section class="sec"><div class="sec-h"><div><h2>Shop by format</h2><p>Three departments, each with its own way to browse.</p></div></div><div class="depts">
   <a class="dcard v" href="#vinyl"><div class="art"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" fill="#120d2a"/><g fill="none" stroke="#52428f" stroke-width="1.2"><circle cx="100" cy="100" r="86"/><circle cx="100" cy="100" r="76"/><circle cx="100" cy="100" r="66"/><circle cx="100" cy="100" r="56"/></g><circle cx="100" cy="100" r="34" fill="#ebcb00"/><circle cx="100" cy="100" r="30" fill="none" stroke="#3b2f6e" stroke-width="1"/><circle cx="100" cy="100" r="5" fill="#3b2f6e"/></svg></div><div class="body"><h3>Vinyl records</h3><ul><li>LPs</li><li>12-inch singles</li><li>7-inch singles</li><li>Box sets</li><li>Collectable vinyl</li></ul><span class="go">Enter the department</span></div></a>
@@ -281,11 +282,11 @@ V.home=()=>{const n=[...P].reverse();
  <section class="sec"><div class="sec-h"><div><h2>New arrivals</h2><p>Freshly imported, with their own artwork.</p></div><a href="#vinyl">View all</a></div><div class="grid g4">${n.slice(0,8).map(card).join("")}</div></section>
  <section class="sec"><div class="sec-h"><div><h2>Featured records</h2><p>Chosen by hand from the shelves.</p></div><a href="#vinyl">View all</a></div><div class="grid g4">${[P[6],P[2],P[4],P[12]].map(card).join("")}</div></section>
  <details class="prev"><summary>About this preview</summary><ul>
-  <li>Every product, price and condition here is a placeholder. The live catalogue comes only from your Discogs CSV, so no department or collection is shown unless it has stock.</li>
-  <li>Album artwork: Discogs' terms do not allow its images to be reused in a shop, so covers come from photos you upload. Until a cover is uploaded, the shop shows a neutral MediaHog sleeve.</li>
+  <li>The albums are real so the cover lookup can be shown. Prices, conditions, stock and seller notes are placeholders. The live catalogue comes only from your Discogs CSV, so no department or collection appears unless it has stock.</li>
+  <li>Album artwork: Discogs' terms do not allow its images in a shop. This page looks up covers through MusicBrainz and the Cover Art Archive when it opens, which can take a minute the first time. The covers are still the labels' copyright, so in the live shop each suggested cover waits for your approval, shows its source, and your own photo of the actual copy can replace it.</li>
   <li>The account icon is new. Order history needs customer accounts, which the current build does not have yet. It would be added as part of the redesign.</li>
   <li>Genre, decade, region and booklet condition appear only if your export includes them. I need a real export to confirm which columns you have.</li>
-  <li>Basket and account buttons in this preview are not connected to anything.</li></ul></details>
+  <li>If covers do not appear, your browser may be blocking the lookup, and the shop falls back to a neutral sleeve. Basket and account buttons in this preview are not connected to anything.</li></ul></details>
  </div>`};
 
 const F={s:"",d:"",g:new Set(),c:new Set(),max:15000,sort:"new"};
@@ -301,7 +302,7 @@ function decOf(y){return y<1970?"1960s":y<1980?"1970s":y<1990?"1980s":"1990s and
 function runDept(key){const sc=it=>Object.values(it.c)[0];
  let l=byF(key).filter(i=>(!F.s||i.sub==F.s)&&(!F.d||decOf(i.year)==F.d)&&(!F.g.size||F.g.has(i.genre))&&(!F.c.size||F.c.has(sc(i)))&&i.price<=F.max);
  l.sort({new:(a,b)=>b.id-a.id,pl:(a,b)=>a.price-b.price,ph:(a,b)=>b.price-a.price,yr:(a,b)=>a.year-b.year}[F.sort]);
- $("#count").textContent=`${l.length} item${l.length==1?"":"s"} (placeholders)`;
+ $("#count").textContent=`${l.length} item${l.length==1?"":"s"} (sample listings)`;
  $("#res").innerHTML=l.length?`<div class="grid">${l.map(card).join("")}</div>`:`<div class="empty">Nothing matches these filters yet. Try widening the price or removing a decade.</div>`}
 function bindDept(key){
  document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{F.s=b.dataset.s;route(true)});
@@ -318,12 +319,12 @@ V.product=id=>{const it=P.find(p=>p.id==id)||P[0],D=DEPT[it.f];
  return `<div class="wrap"><div class="crumb"><a href="#home">Home</a> / <a href="#${it.f=="vinyl"?"vinyl":it.f=="cd"?"cds":"dvds"}">${D.name}</a> / ${esc(it.sub)}</div>
  <div class="pdp"><div class="media" style="padding:6%"><span class="fmt" style="position:absolute;left:12px;top:12px;background:var(--paper);border:1px solid var(--line);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;color:var(--burg)">${FL[it.f]}</span>${cover(it)}</div>
  <div><div class="fmtswitch">View a ${others.map(o=>`<a href="#p-${o.it.id}" class="${o.f==it.f?"on":""}">${FL[o.f]}</a>`).join("")} product page</div>
- <div class="artist">${esc(it.artist)}</div><h1>${esc(it.title)}</h1><div class="meta">${it.year} · ${esc(it.genre)} · ${esc(it.label)} · Cat. no. ${esc(it.cat)}</div>
+ <div class="artist">${esc(it.artist)}</div><h1>${esc(it.title)}</h1><div class="meta">${it.year} · ${esc(it.genre)}</div>
  <div class="price">${gbp(it.price)}</div><button class="btn dark" id="add">Add to basket</button> <span style="color:var(--muted);font-size:14px;margin-left:10px">1 in stock</span>
  <table class="cond-t"><tr><th>${hdr[0]}</th><th style="text-align:right">${hdr[1]}</th></tr>${rows}</table>
  <div class="notes"><b style="font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-t);display:block;margin-bottom:6px">Seller notes</b>${esc(it.notes)}</div>
  <div class="trust"><div><b>Graded carefully</b>Every item is checked and described honestly.</div><div><b>Packed to arrive safe</b>Stiff mailers and protective sleeves.</div><div><b>UK and worldwide</b>Delivery calculated at checkout.</div><div><b>Secure payment</b>Pay by card, Apple Pay or Google Pay through Stripe.</div></div>
- <p style="margin-top:22px;font-size:12.5px;color:var(--muted);font-style:italic">Placeholder product for layout only.</p></div></div>
+ <p style="margin-top:22px;font-size:12.5px;color:var(--muted);font-style:italic">${it.img?'Cover found automatically via the Cover Art Archive. In the live shop you approve each suggested cover before it appears.':'Cover lookup in progress, or none found. In the live shop you can upload your own photo instead.'} Label, catalogue number, price and stock come from your Discogs export.</p></div></div>
  <section class="sec"><div class="sec-h"><div><h2>More to explore</h2></div></div><div class="grid">${P.filter(p=>p.genre==it.genre&&p.id!=it.id).concat(P.filter(p=>p.genre!=it.genre)).slice(0,4).map(card).join("")}</div></section></div>`}
 V.account=()=>`<div class="wrap"><div style="max-width:560px;margin:70px auto"><h1 style="font-size:2.6rem;color:var(--burg)">Your account</h1><p style="font-family:var(--text);line-height:1.8">This is where customers will sign in to see their order history and tracking. It is part of the redesign proposal and is not built yet.</p><a class="btn dark" href="#home">Back to the shop</a></div></div>`;
 
@@ -335,6 +336,22 @@ function route(keep){const h=location.hash.slice(1)||"home",[path,qs]=h.split("?
  app.innerHTML=html;after()}
 addEventListener("hashchange",()=>{route();scrollTo(0,0)});
 $("#sf").onsubmit=e=>{e.preventDefault();toast("Search runs across the whole catalogue in the live shop.")};
+
+const CK="mhcov3";let cache={};try{cache=JSON.parse(localStorage.getItem(CK)||"{}")}catch(e){}
+P.forEach(it=>{if(cache[it.id])it.img=cache[it.id]});
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const tryImg=u=>new Promise(r=>{const i=new Image();i.onload=()=>r(true);i.onerror=()=>r(false);i.src=u});
+async function enrich(){
+ for(const it of P){ if(it.img)continue;
+  try{const q=`releasegroup:"${it.title}" AND artist:"${it.artist}"`;
+   const r=await fetch(`https://musicbrainz.org/ws/2/release-group/?query=${encodeURIComponent(q)}&fmt=json&limit=3`);
+   if(r.ok){const j=await r.json();
+    for(const g of j["release-groups"]||[]){const u=`https://coverartarchive.org/release-group/${g.id}/front-500`;
+     if(await tryImg(u)){it.img=u;cache[it.id]=u;try{localStorage.setItem(CK,JSON.stringify(cache))}catch(e){}
+      document.querySelectorAll(`[data-cv="${it.id}"]`).forEach(el=>el.outerHTML=cover(it));break}}}
+  }catch(e){}
+  await sleep(1100)}}
 route();
+enrich();
 </script>
 </body></html>
