@@ -10,7 +10,7 @@
 --brass:#ebcb00;--brass-l:#ebcb00;--brass-t:#5d4da0;--ink:#1f1838;--muted:#6a6283;--line:#ddd2b4;--ok:#1f7a66;
 --display:"Libre Caslon Display","Libre Caslon Text",Georgia,serif;--text:"Libre Caslon Text",Georgia,serif;--sans:"Libre Franklin",Helvetica,Arial,sans-serif;color-scheme:light}
 *{box-sizing:border-box}
-body{background:var(--ivory) var(--grain,none);color:var(--ink);font:16px/1.55 var(--sans);margin:0;-webkit-font-smoothing:antialiased}
+body{background:var(--ivory) var(--grain,none);color:var(--ink);font:17px/1.55 var(--sans);margin:0;-webkit-font-smoothing:antialiased}
 a{color:inherit}button{font:inherit;cursor:pointer;color:inherit}
 :focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 .wrap{max-width:1240px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
@@ -188,6 +188,33 @@ footer.site .legal{border-top:1px solid rgba(235,203,0,.3);font-size:13px;paddin
  .tools .ico span{display:none}
 }
 @media(max-width:560px){.decades{grid-template-columns:1fr}footer.site .wrap{grid-template-columns:1fr}}
+
+.btn{min-height:48px}
+.qty{display:inline-flex;align-items:center;border:1.5px solid var(--ink);border-radius:2px;background:var(--paper)}
+.qty button{width:44px;height:44px;border:0;background:transparent;font-size:1.4rem;font-weight:600;color:var(--burg)}
+.qty button:hover:not([disabled]){background:var(--cream)}.qty button[disabled]{opacity:.3;cursor:not-allowed}
+.qty b{min-width:36px;text-align:center;font-size:1.1rem}
+.linkbtn{background:none;border:0;color:var(--burg);text-decoration:underline;text-underline-offset:4px;font-weight:600;padding:8px 4px}
+.bk{display:grid;grid-template-columns:1fr 380px;gap:48px;padding-top:12px;align-items:start}
+.bk-row{display:grid;grid-template-columns:110px 1fr auto;gap:22px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.bk-row .media{aspect-ratio:1}
+.bk-row h3{font-size:1.3rem;margin:2px 0}
+.bk-row .p{font-family:var(--display);font-size:1.5rem;color:var(--burg);text-align:right}
+.sum{background:var(--paper);border:1.5px solid var(--ink);padding:26px;border-radius:2px;position:sticky;top:20px}
+.sum h3{font-size:1.5rem;margin-bottom:16px;color:var(--burg)}
+.sum .l{display:flex;justify-content:space-between;padding:8px 0;font-size:1.05rem}
+.sum .t{border-top:1.5px solid var(--ink);margin-top:10px;padding-top:14px;font-family:var(--display);font-size:1.7rem;color:var(--burg)}
+.sum select,.form input,.form select{font:inherit;width:100%;padding:13px 12px;border:1.5px solid var(--ink);background:#fff;border-radius:2px;color:var(--ink)}
+.sum label,.form label{display:block;font-weight:600;margin:14px 0 6px}
+.form{background:var(--paper);border:1.5px solid var(--line);padding:28px;border-radius:2px}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pay{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 4px}
+.pay label{display:flex;align-items:center;gap:8px;border:1.5px solid var(--ink);padding:12px 16px;margin:0;font-weight:600;cursor:pointer;border-radius:2px;background:#fff}
+.pay input{width:auto;accent-color:var(--burg)}
+.demo-note{background:#fff4c2;border-left:5px solid var(--sun);padding:12px 16px;font-size:15px;margin:18px 0}
+.sold{position:absolute;right:8px;top:8px;z-index:3;background:var(--walnut);color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
+.empty-b{text-align:center;padding:70px 0}
+@media(max-width:980px){.bk{grid-template-columns:1fr}.sum{position:static}.bk-row{grid-template-columns:84px 1fr}.bk-row .p{grid-column:2;text-align:left}.form .two{grid-template-columns:1fr}}
 </style></head><body>
 
 <div class="note-bar"><div class="wrap"><b>Design preview.</b> Sample listings only: real albums with covers found automatically through MusicBrainz and the Cover Art Archive. Prices, conditions and stock are placeholders, not your inventory.</div></div>
@@ -196,7 +223,7 @@ footer.site .legal{border-top:1px solid rgba(235,203,0,.3);font-size:13px;paddin
  <a class="brand" href="#home" aria-label="MediaHog home"><span class="seal" id="hSeal"></span><span class="wm"><b>MediaHog</b><small>Independent music</small></span></a>
  <form class="search" id="sf" role="search"><select id="sd" aria-label="Department"><option value="">All departments</option><option value="vinyl">Vinyl</option><option value="cd">CDs</option><option value="dvd">DVDs &amp; Films</option></select><input id="q" type="text" placeholder="Search artist, album, label, catalogue number or year" aria-label="Search"><button>Search</button></form>
  <div class="tools"><a class="ico" href="#account" aria-label="Account"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span>Account</span></a>
- <a class="ico" href="#home" id="bag" aria-label="Basket"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Basket</span><em id="bn">0</em></a></div>
+ <a class="ico" href="#basket" id="bag" aria-label="Basket"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Basket</span><em id="bn">0</em></a></div>
 </div>
 <nav class="dept" aria-label="Departments"><div class="wrap"><ul>
  <li><a class="t" href="#vinyl">Vinyl records</a><div class="dd"><a class="all" href="#vinyl">All vinyl</a><a href="#vinyl?s=LPs">LPs</a><a href="#vinyl?s=12-inch singles">12-inch singles</a><a href="#vinyl?s=7-inch singles">7-inch singles</a><a href="#vinyl?s=Box sets">Box sets</a><a href="#vinyl?s=Collectable vinyl">Collectable vinyl</a></div></li>
@@ -259,10 +286,27 @@ const DEPT={vinyl:{name:"Vinyl records",cls:"v",subs:["LPs","12-inch singles","7
  dvd:{name:"DVDs & Films",cls:"d",subs:["Films","Music DVDs","Live concerts","Documentaries","Box sets"],blurb:"Films, concerts and music documentaries, with region and format shown so you know it will play."}};
 const FL={vinyl:"Vinyl",cd:"CD",dvd:"DVD"};
 const $=s=>document.querySelector(s),app=$("#app");
-let bn=0;function toast(m){const t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,2400)}
+let bn=0;function toast(m){const t=$("#toast");t.innerHTML=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,2400)}
 const condLine=it=>Object.entries(it.c).filter(([k])=>!["Region","Format"].includes(k)).map(([k,v])=>`${k} ${v}`).join(" · ");
-function card(it){return `<a class="pcard" href="#p-${it.id}"><div class="media"><span class="fmt">${FL[it.f]}</span>${cover(it)}</div><div class="art"><div class="artist">${esc(it.artist)}</div><h3>${esc(it.title)}</h3><div class="sub">${it.year} · ${FL[it.f]}${it.f=="vinyl"?" · "+it.sub.replace("s","").replace("LP","LP"):""}</div><div class="cond">${condLine(it)}</div><div class="price">${gbp(it.price)}</div></div></a>`}
+function card(it){return `<a class="pcard" href="#p-${it.id}"><div class="media"><span class="fmt">${FL[it.f]}</span>${left(it)<=0?'<span class="sold">Sold</span>':""}${cover(it)}</div><div class="art"><div class="artist">${esc(it.artist)}</div><h3>${esc(it.title)}</h3><div class="sub">${it.year} · ${FL[it.f]}${it.f=="vinyl"?" · "+it.sub.replace("s","").replace("LP","LP"):""}</div><div class="cond">${condLine(it)}</div><div class="price">${gbp(it.price)}</div></div></a>`}
 const byF=f=>P.filter(p=>p.f==f);
+
+
+const LS=(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}};
+const SV=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+P.forEach(p=>p.qty=[5,9,11].includes(p.id)?2:1);
+let basket=LS("mhb",[]),sold=LS("mhs",{}),orders=LS("mho",[]),zone=LS("mhz","UK");
+const left=it=>it.qty-(sold[it.id]||0);
+const inBag=id=>(basket.find(b=>b.id==id)||{n:0}).n;
+const prod=id=>P.find(p=>p.id==id);
+basket=basket.filter(b=>prod(b.id)&&left(prod(b.id))>0).map(b=>({id:b.id,n:Math.min(b.n,left(prod(b.id)))}));
+const ZONES={UK:{name:"United Kingdom",first:400,extra:100},EU:{name:"Europe",first:1000,extra:200},INT:{name:"Rest of the world",first:1800,extra:400}};
+const ship=(z,n)=>n?ZONES[z].first+ZONES[z].extra*(n-1):0;
+const bagCount=()=>basket.reduce((a,b)=>a+b.n,0);
+const bagSub=()=>basket.reduce((a,b)=>a+prod(b.id).price*b.n,0);
+function saveB(){SV("mhb",basket);updBag()}
+function updBag(){const n=bagCount(),e=$("#bn");e.textContent=n;e.style.display=n?"grid":"none"}
+function addToBag(id){const it=prod(id);if(inBag(id)>=left(it))return false;const x=basket.find(b=>b.id==id);x?x.n++:basket.push({id:+id,n:1});saveB();return true}
 
 const V={};
 V.home=()=>{const n=[...P].reverse();
@@ -286,7 +330,7 @@ V.home=()=>{const n=[...P].reverse();
   <li>Album artwork: Discogs' terms do not allow its images in a shop. This page looks up covers through MusicBrainz and the Cover Art Archive when it opens, which can take a minute the first time. The covers are still the labels' copyright, so in the live shop each suggested cover waits for your approval, shows its source, and your own photo of the actual copy can replace it.</li>
   <li>The account icon is new. Order history needs customer accounts, which the current build does not have yet. It would be added as part of the redesign.</li>
   <li>Genre, decade, region and booklet condition appear only if your export includes them. I need a real export to confirm which columns you have.</li>
-  <li>If covers do not appear, your browser may be blocking the lookup, and the shop falls back to a neutral sleeve. Basket and account buttons in this preview are not connected to anything.</li></ul></details>
+  <li>If covers do not appear, your browser may be blocking the lookup, and the shop falls back to a neutral sleeve. The basket and checkout here are a working demo that remembers your choices in this browser only. No payment is taken and no email is sent. The live shop uses Stripe for payment.</li></ul></details>
  </div>`};
 
 const F={s:"",d:"",g:new Set(),c:new Set(),max:15000,sort:"new"};
@@ -320,18 +364,45 @@ V.product=id=>{const it=P.find(p=>p.id==id)||P[0],D=DEPT[it.f];
  <div class="pdp"><div class="media" style="padding:6%"><span class="fmt" style="position:absolute;left:12px;top:12px;background:var(--paper);border:1px solid var(--line);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;color:var(--burg)">${FL[it.f]}</span>${cover(it)}</div>
  <div><div class="fmtswitch">View a ${others.map(o=>`<a href="#p-${o.it.id}" class="${o.f==it.f?"on":""}">${FL[o.f]}</a>`).join("")} product page</div>
  <div class="artist">${esc(it.artist)}</div><h1>${esc(it.title)}</h1><div class="meta">${it.year} · ${esc(it.genre)}</div>
- <div class="price">${gbp(it.price)}</div><button class="btn dark" id="add">Add to basket</button> <span style="color:var(--muted);font-size:14px;margin-left:10px">1 in stock</span>
+ <div class="price">${gbp(it.price)}</div>${left(it)<=0?`<p><b>Sold.</b> This copy has gone.</p>`:inBag(it.id)>=left(it)?`<a class="btn dark" href="#basket">In your basket. View basket</a>`:`<button class="btn dark" id="add">Add to basket</button> <span style="color:var(--muted);font-size:15px;margin-left:10px">${left(it)} in stock</span>`}
  <table class="cond-t"><tr><th>${hdr[0]}</th><th style="text-align:right">${hdr[1]}</th></tr>${rows}</table>
  <div class="notes"><b style="font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-t);display:block;margin-bottom:6px">Seller notes</b>${esc(it.notes)}</div>
  <div class="trust"><div><b>Graded carefully</b>Every item is checked and described honestly.</div><div><b>Packed to arrive safe</b>Stiff mailers and protective sleeves.</div><div><b>UK and worldwide</b>Delivery calculated at checkout.</div><div><b>Secure payment</b>Pay by card, Apple Pay or Google Pay through Stripe.</div></div>
  <p style="margin-top:22px;font-size:12.5px;color:var(--muted);font-style:italic">${it.img?'Cover found automatically via the Cover Art Archive. In the live shop you approve each suggested cover before it appears.':'Cover lookup in progress, or none found. In the live shop you can upload your own photo instead.'} Label, catalogue number, price and stock come from your Discogs export.</p></div></div>
  <section class="sec"><div class="sec-h"><div><h2>More to explore</h2></div></div><div class="grid">${P.filter(p=>p.genre==it.genre&&p.id!=it.id).concat(P.filter(p=>p.genre!=it.genre)).slice(0,4).map(card).join("")}</div></section></div>`}
-V.account=()=>`<div class="wrap"><div style="max-width:560px;margin:70px auto"><h1 style="font-size:2.6rem;color:var(--burg)">Your account</h1><p style="font-family:var(--text);line-height:1.8">This is where customers will sign in to see their order history and tracking. It is part of the redesign proposal and is not built yet.</p><a class="btn dark" href="#home">Back to the shop</a></div></div>`;
+
+V.basket=()=>{const n=bagCount();
+ if(!n)return `<div class="wrap"><div class="empty-b"><h1 style="font-size:2.6rem;color:var(--burg)">Your basket is empty</h1><p style="font-family:var(--text);font-size:1.1rem;color:var(--muted)">Find something you like and press "Add to basket".</p><a class="btn" href="#vinyl">Browse records</a></div></div>`;
+ const sub=bagSub(),sh=ship(zone,n);
+ return `<div class="wrap"><div class="crumb"><a href="#home">Home</a> / Basket</div><h1 style="font-size:2.6rem;color:var(--burg);margin:14px 0 22px">Your basket</h1><div class="bk"><div>${basket.map(b=>{const it=prod(b.id),L=left(it);return `<div class="bk-row"><div class="media">${cover(it)}</div><div><div class="artist" style="font-size:12.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--brass-t)">${esc(it.artist)}</div><h3>${esc(it.title)}</h3><div style="color:var(--muted);font-size:15px">${it.year} · ${FL[it.f]} · ${condLine(it)}</div><div style="margin-top:12px;display:flex;gap:18px;align-items:center;flex-wrap:wrap"><span class="qty" role="group" aria-label="Quantity"><button data-m="${it.id}" aria-label="One fewer">&minus;</button><b>${b.n}</b><button data-p="${it.id}" aria-label="One more" ${b.n>=L?"disabled":""}>+</button></span><button class="linkbtn" data-x="${it.id}">Remove</button>${b.n>=L?`<span style="color:var(--muted);font-size:14px">That is all we have</span>`:""}</div></div><div class="p">${gbp(it.price*b.n)}</div></div>`}).join("")}<p style="margin-top:20px"><a class="linkbtn" href="#vinyl">&larr; Keep browsing</a></p></div>
+ <aside class="sum"><h3>Order summary</h3><div class="l"><span>Items (${n})</span><b>${gbp(sub)}</b></div><label for="zn">Deliver to</label><select id="zn">${Object.entries(ZONES).map(([k,z])=>`<option value="${k}" ${zone==k?"selected":""}>${z.name}</option>`).join("")}</select><div class="l" style="margin-top:12px"><span>Postage</span><b>${gbp(sh)}</b></div><p style="font-size:14px;color:var(--muted);margin:0">First item ${gbp(ZONES[zone].first)}, then ${gbp(ZONES[zone].extra)} for each extra. Everything ships together.</p><div class="l t"><span>Total</span><span>${gbp(sub+sh)}</span></div><a class="btn dark" href="#checkout" style="display:block;text-align:center;margin-top:18px">Go to checkout</a></aside></div></div>`};
+function bindBasket(){
+ document.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{addToBag(b.dataset.p);route(true)});
+ document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{const x=basket.find(i=>i.id==b.dataset.m);x.n--;if(x.n<=0)basket=basket.filter(i=>i!==x);saveB();route(true)});
+ document.querySelectorAll("[data-x]").forEach(b=>b.onclick=()=>{basket=basket.filter(i=>i.id!=b.dataset.x);saveB();toast("Removed from your basket.");route(true)});
+ const z=$("#zn");if(z)z.onchange=()=>{zone=z.value;SV("mhz",zone);route(true)}}
+V.checkout=()=>{const n=bagCount();if(!n)return V.basket();const sub=bagSub(),sh=ship(zone,n);
+ return `<div class="wrap"><div class="crumb"><a href="#home">Home</a> / <a href="#basket">Basket</a> / Checkout</div><h1 style="font-size:2.6rem;color:var(--burg);margin:14px 0 22px">Checkout</h1><div class="demo-note"><b>Demo checkout.</b> No payment is taken and no email is sent. In the live shop, the pay button opens Stripe's secure page, and an order only counts as paid once Stripe confirms it.</div><div class="bk"><form class="form" id="cf"><h3 style="font-size:1.5rem;color:var(--burg)">Your details</h3>
+ <label for="nm">Full name</label><input id="nm" required autocomplete="name" value="Sample Customer"><label for="em">Email</label><input id="em" type="email" required autocomplete="email" value="customer@example.com">
+ <label for="a1">Address</label><input id="a1" required autocomplete="address-line1" value="1 Sample Street"><div class="two"><div><label for="ct">Town or city</label><input id="ct" required value="Leeds"></div><div><label for="pc">Postcode</label><input id="pc" required value="LS1 1AA"></div></div>
+ <label>Delivering to</label><div style="padding:12px 0;font-weight:600">${ZONES[zone].name} <a class="linkbtn" href="#basket">Change</a></div>
+ <label>Pay with</label><div class="pay"><label><input type="radio" name="pm" checked>Card</label><label><input type="radio" name="pm">Apple Pay</label><label><input type="radio" name="pm">Google Pay</label></div>
+ <button class="btn dark" style="width:100%;margin-top:22px;font-size:15px">Pay ${gbp(sub+sh)} (demo)</button></form>
+ <aside class="sum"><h3>Your order</h3>${basket.map(b=>`<div class="l"><span>${esc(prod(b.id).title)} × ${b.n}</span><b>${gbp(prod(b.id).price*b.n)}</b></div>`).join("")}<div class="l"><span>Postage</span><b>${gbp(sh)}</b></div><div class="l t"><span>Total</span><span>${gbp(sub+sh)}</span></div></aside></div></div>`};
+function bindCheckout(){const f=$("#cf");if(!f)return;f.onsubmit=e=>{e.preventDefault();const n=bagCount(),sub=bagSub(),sh=ship(zone,n);
+ const o={no:1001+orders.length,date:new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"}),email:$("#em").value,who:$("#nm").value,zone,ship:sh,total:sub+sh,items:basket.map(b=>({id:b.id,t:prod(b.id).title,a:prod(b.id).artist,n:b.n,price:prod(b.id).price}))};
+ basket.forEach(b=>sold[b.id]=(sold[b.id]||0)+b.n);orders.unshift(o);SV("mhs",sold);SV("mho",orders);basket=[];saveB();location.hash="#thanks-"+o.no}}
+V.thanks=no=>{const o=orders.find(x=>x.no==no);if(!o)return V.home();
+ return `<div class="wrap"><div style="max-width:640px;margin:56px auto"><h1 style="font-size:2.8rem;color:var(--burg)">Thank you for your order</h1><p style="font-family:var(--text);font-size:1.1rem;line-height:1.8">Your order number is <b>#${o.no}</b>. A confirmation email would now be sent to ${esc(o.email)}, and a second one when your order is posted.</p><div class="sum" style="position:static;margin:22px 0">${o.items.map(i=>`<div class="l"><span>${esc(i.t)} × ${i.n}</span><b>${gbp(i.price*i.n)}</b></div>`).join("")}<div class="l"><span>Postage (${ZONES[o.zone].name})</span><b>${gbp(o.ship)}</b></div><div class="l t"><span>Total</span><span>${gbp(o.total)}</span></div></div><a class="btn" href="#vinyl">Keep browsing</a> <a class="linkbtn" href="#account">See your orders</a></div></div>`};
+V.account=()=>`<div class="wrap"><div style="max-width:760px;margin:56px auto"><h1 style="font-size:2.6rem;color:var(--burg)">Your orders</h1>${orders.length?orders.map(o=>`<div class="sum" style="position:static;margin:18px 0"><div class="l"><b>Order #${o.no}</b><span>${o.date}</span></div>${o.items.map(i=>`<div class="l"><span>${esc(i.t)} × ${i.n}</span><span>${gbp(i.price*i.n)}</span></div>`).join("")}<div class="l t"><span>Total</span><span>${gbp(o.total)}</span></div></div>`).join(""):`<p style="font-family:var(--text);line-height:1.8">No orders yet. In the live shop, customers sign in here to see their orders and tracking. Orders you place in this demo appear here.</p>`}<a class="btn dark" href="#home">Back to the shop</a></div></div>`;
 
 function route(keep){const h=location.hash.slice(1)||"home",[path,qs]=h.split("?"),p=Object.fromEntries(new URLSearchParams(qs||""));if(keep)p.keep=1;
  let html,after=()=>{};
  if(path=="vinyl"||path=="cds"||path=="dvds"){const key={vinyl:"vinyl",cds:"cd",dvds:"dvd"}[path];html=dept(key,p);after=()=>bindDept(key)}
- else if(path.startsWith("p-")){const id=path.slice(2);html=V.product(id);after=()=>{const a=$("#add");if(a)a.onclick=()=>{bn++;$("#bn").textContent=bn;toast("Added to your basket (preview only).")}}}
+ else if(path.startsWith("p-")){const id=path.slice(2);html=V.product(id);after=()=>{const a=$("#add");if(a)a.onclick=()=>{if(addToBag(id)){toast("Added to your basket. <a href=\"#basket\" style=\"color:#ebcb00\">View basket</a>");route()}}}}
+ else if(path=="basket"){html=V.basket();after=bindBasket}
+ else if(path=="checkout"){html=V.checkout();after=bindCheckout}
+ else if(path.startsWith("thanks-")){html=V.thanks(path.slice(7))}
  else if(V[path])html=V[path]();else html=V.home();
  app.innerHTML=html;after()}
 addEventListener("hashchange",()=>{route();scrollTo(0,0)});
@@ -356,7 +427,7 @@ async function enrich(){
    }catch(e){}
    await sleep(1100)}}
  status()}
-route();
+updBag();route();
 enrich();
 </script>
 </body></html>
